@@ -47,7 +47,7 @@
                             <div class="text-center text-emerald-500">$1,655.72</div>
                         </td>
                         <td class="p-2">
-                            <div class="text-center">$6.94</div>
+                            <div class="text-center text-emerald-700">$6.94</div>
                         </td>
                         <td class="p-2">
                             <div class="text-center text-sky-500">0.04</div>
@@ -55,7 +55,6 @@
                     </tr>
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>
