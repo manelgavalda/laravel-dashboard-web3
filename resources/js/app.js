@@ -9,8 +9,8 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import DashboardCard07 from './components/DashboardCard07.vue';
-app.component('dashboard-card-07', DashboardCard07);
+import TokenBalances from './components/TokenBalances.vue';
+app.component('token-balances', TokenBalances);
 
 /**
  * The following block of code may be used to automatically register your
