@@ -53,7 +53,7 @@
             <x-dashboard.dashboard-card-06 />
 
             <!-- Table (Top Channels) -->
-            <x-dashboard.dashboard-card-07 />
+            <dashboard-card-07></dashboard-card-07>
 
             <!-- Line chart (Sales Over Time)  -->
             <x-dashboard.dashboard-card-08 />
