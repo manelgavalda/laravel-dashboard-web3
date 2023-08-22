@@ -58,7 +58,7 @@
                             </div>
                         </div>
 
-                        <div class="w-full max-w-sm mx-auto px-4 py-8">
+                        <div id="app" class="w-full max-w-sm mx-auto px-4 py-8">
                             {{ $slot }}
                         </div>
 
