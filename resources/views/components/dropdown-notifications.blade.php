@@ -5,10 +5,10 @@
 <div class="relative inline-flex" x-data="{ open: false }">
     <button
         class="w-8 h-8 flex items-center justify-center bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600/80 rounded-full"
-        :class="{ 'bg-slate-200': open }"
+        x-bind:class="{ 'bg-slate-200': open }"
         aria-haspopup="true"
-        @click.prevent="open = !open"
-        :aria-expanded="open"                        
+        x-on:click.prevent="open = !open"
+        x-bind:aria-expanded="open"                        
     >
         <span class="sr-only">Notifications</span>
         <svg class="w-4 h-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -19,8 +19,8 @@
     </button>
     <div
         class="origin-top-right z-10 absolute top-full -mr-48 sm:mr-0 min-w-80 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1 {{$align === 'right' ? 'right-0' : 'left-0'}}"                
-        @click.outside="open = false"
-        @keydown.escape.window="open = false"
+        x-on:click.outside="open = false"
+        x-on:keydown.escape.window="open = false"
         x-show="open"
         x-transition:enter="transition ease-out duration-200 transform"
         x-transition:enter-start="opacity-0 -translate-y-2"
@@ -33,19 +33,19 @@
         <div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase pt-1.5 pb-2 px-4">Notifications</div>
         <ul>
             <li class="border-b border-slate-200 dark:border-slate-700 last:border-0">
-                <a class="block py-2 px-4 hover:bg-slate-50 dark:hover:bg-slate-700/20" href="#0" @click="open = false" @focus="open = true" @focusout="open = false">
+                <a class="block py-2 px-4 hover:bg-slate-50 dark:hover:bg-slate-700/20" href="#0" x-on:click="open = false" x-on:focus="open = true" x-on:focusout="open = false">
                     <span class="block text-sm mb-2">📣 <span class="font-medium text-slate-800 dark:text-slate-100">Edit your information in a swipe</span> Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
                     <span class="block text-xs font-medium text-slate-400 dark:text-slate-500">Feb 12, 2021</span>
                 </a>
             </li>
             <li class="border-b border-slate-200 dark:border-slate-700 last:border-0">
-                <a class="block py-2 px-4 hover:bg-slate-50 dark:hover:bg-slate-700/20" href="#0" @click="open = false" @focus="open = true" @focusout="open = false">
+                <a class="block py-2 px-4 hover:bg-slate-50 dark:hover:bg-slate-700/20" href="#0" x-on:click="open = false" x-on:focus="open = true" x-on:focusout="open = false">
                     <span class="block text-sm mb-2">📣 <span class="font-medium text-slate-800 dark:text-slate-100">Edit your information in a swipe</span> Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
                     <span class="block text-xs font-medium text-slate-400 dark:text-slate-500">Feb 9, 2021</span>
                 </a>
             </li>
             <li class="border-b border-slate-200 dark:border-slate-700 last:border-0">
-                <a class="block py-2 px-4 hover:bg-slate-50 dark:hover:bg-slate-700/20" href="#0" @click="open = false" @focus="open = true" @focusout="open = false">
+                <a class="block py-2 px-4 hover:bg-slate-50 dark:hover:bg-slate-700/20" href="#0" x-on:click="open = false" x-on:focus="open = true" x-on:focusout="open = false">
                     <span class="block text-sm mb-2">🚀<span class="font-medium text-slate-800 dark:text-slate-100">Say goodbye to paper receipts!</span> Sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
                     <span class="block text-xs font-medium text-slate-400 dark:text-slate-500">Jan 24, 2020</span>
                 </a>

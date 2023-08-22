@@ -1,13 +1,13 @@
 <div class="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
     <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center">
             <h2 class="font-semibold text-slate-800 dark:text-slate-100">Real Time Value</h2>
-        <div class="relative ml-2" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+        <div class="relative ml-2" x-data="{ open: false }" x-on:mouseenter="open = true" x-on:mouseleave="open = false">
             <button
                 class="block"
                 aria-haspopup="true"
-                :aria-expanded="open"
-                @focus="open = true"
-                @focusout="open = false" @click.prevent
+                x-bind:aria-expanded="open"
+                x-on:focus="open = true"
+                x-on:focusout="open = false" x-on:click.prevent
             >
                 <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
                     <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z"/>
@@ -25,7 +25,7 @@
                     x-transition:leave-end="opacity-0"
                     x-cloak
                 >
-                    <div class="text-xs text-center whitespace-nowrap">Built with <a class="underline" @focus="open = true" @focusout="open = false" href="https://www.chartjs.org/" target="_blank">Chart.js</a></div>
+                    <div class="text-xs text-center whitespace-nowrap">Built with <a class="underline" x-on:focus="open = true" x-on:focusout="open = false" href="https://www.chartjs.org/" target="_blank">Chart.js</a></div>
                 </div>
             </div>
         </div>

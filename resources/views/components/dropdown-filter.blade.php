@@ -6,8 +6,8 @@
     <button
         class="btn bg-white dark:bg-slate-800 border-slate-200 hover:border-slate-300 dark:border-slate-700 dark:hover:border-slate-600 text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
         aria-haspopup="true"
-        @click.prevent="open = !open"
-        :aria-expanded="open"
+        x-on:click.prevent="open = !open"
+        x-bind:aria-expanded="open"
     >
         <span class="sr-only">Filter</span><wbr>
         <svg class="w-4 h-4 fill-current" viewBox="0 0 16 16">
@@ -16,8 +16,8 @@
     </button>
     <div
         class="origin-top-right z-10 absolute top-full left-0 right-auto min-w-56 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 pt-1.5 rounded shadow-lg overflow-hidden mt-1 {{$align === 'right' ? 'md:left-auto md:right-0' : 'md:left-0 md:right-auto'}}"                
-        @click.outside="open = false"
-        @keydown.escape.window="open = false"
+        x-on:click.outside="open = false"
+        x-on:keydown.escape.window="open = false"
         x-show="open"
         x-transition:enter="transition ease-out duration-200 transform"
         x-transition:enter-start="opacity-0 -translate-y-2"
@@ -72,7 +72,7 @@
                     <button class="btn-xs bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-500 dark:text-slate-300 hover:text-slate-600 dark:hover:text-slate-200">Clear</button>
                 </li>
                 <li>
-                    <button class="btn-xs bg-indigo-500 hover:bg-indigo-600 text-white" @click="open = false" @focusout="open = false">Apply</button>
+                    <button class="btn-xs bg-indigo-500 hover:bg-indigo-600 text-white" x-on:click="open = false" x-on:focusout="open = false">Apply</button>
                 </li>
             </ul>
         </div>
