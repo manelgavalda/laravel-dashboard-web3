@@ -37,7 +37,7 @@
                                     <title>Ethereum icon</title>
                                     <path d="M11.944 17.97L4.58 13.62 11.943 24l7.37-10.38-7.372 4.35h.003zM12.056 0L4.69 12.223l7.365 4.354 7.365-4.35L12.056 0z"/>
                                 </svg>
-                                <div class="text-slate-800 dark:text-slate-100 pl-5">ETH</div>
+                                <div class="text-slate-800 dark:text-slate-100 pl-1">ETH</div>
                             </div>
                         </td>
                         <td class="p-2">
