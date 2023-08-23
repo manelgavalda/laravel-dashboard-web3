@@ -50,10 +50,12 @@
             <x-dashboard.dashboard-card-05 />
 
             <!-- Doughnut chart (Top Countries) -->
-            <x-dashboard.dashboard-card-06 />
+            {{-- <x-dashboard.dashboard-card-06 /> --}}
 
             <!-- Table (Top Channels) -->
-            <token-balances />
+            @foreach($networks as $title => $contracts)
+                <token-balances contracts="{{ json_encode($contracts) }}"></token-balances>
+            @endforeach
 
             <!-- Line chart (Sales Over Time)  -->
             <x-dashboard.dashboard-card-08 />

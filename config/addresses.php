@@ -74,7 +74,7 @@ return [
             'name' => 'USDC'
         ]
     ],
-    'contracts' => [
+    'networks' => [
         'arbitrum' => [
             [
                 'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
@@ -103,12 +103,12 @@ return [
                 'type' => 'Token',
                 'name' => 'wstETH'
             ],
-            [
-                'address' => '0x453f61390ce6DfB668bbF4D93E58c94BB0ae81f3',
-                'type' => 'BeefyPool',
-                'name' => 'DOLA/USDC',
-                'stable' => true
-            ]
+            // [
+            //     'address' => '0x453f61390ce6DfB668bbF4D93E58c94BB0ae81f3',
+            //     'type' => 'BeefyPool',
+            //     'name' => 'DOLA/USDC',
+            //     'stable' => true
+            // ]
         ],
         'mainnet' => [
             [
@@ -121,21 +121,21 @@ return [
                 'type' => 'Token',
                 'name' => 'CVX'
             ],
-            [
-                'address' => '0xb5b29320d2dde5ba5bafa1ebcd270052070483ec',
-                'type' => 'Sommelier',
-                'name' => 'RealYield ETH'
-            ],
-            [
-                'address' => '0x0A760466E1B4621579a82a39CB56Dda2F4E70f03',
-                'type' => 'ConvexPool',
-                'name' => 'stETH/ETH'
-            ],
-            [
-                'address' => '0x83507cc8c8b67ed48badd1f59f684d5d02884c81',
-                'type' => 'CvxCrvPounderPool',
-                'name' => 'cvxCRV Pounder'
-            ]
+            // [
+            //     'address' => '0xb5b29320d2dde5ba5bafa1ebcd270052070483ec',
+            //     'type' => 'Sommelier',
+            //     'name' => 'RealYield ETH'
+            // ],
+            // [
+            //     'address' => '0x0A760466E1B4621579a82a39CB56Dda2F4E70f03',
+            //     'type' => 'ConvexPool',
+            //     'name' => 'stETH/ETH'
+            // ],
+            // [
+            //     'address' => '0x83507cc8c8b67ed48badd1f59f684d5d02884c81',
+            //     'type' => 'CvxCrvPounderPool',
+            //     'name' => 'cvxCRV Pounder'
+            // ]
         ]
     ]
 ];

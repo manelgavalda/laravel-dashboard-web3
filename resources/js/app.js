@@ -12,6 +12,12 @@ const app = createApp({});
 import TokenBalances from './components/TokenBalances.vue';
 app.component('token-balances', TokenBalances);
 
+app.config.globalProperties.$filters = {
+  currencyUSD(value) {
+    return '$' + value
+  }
+}
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
