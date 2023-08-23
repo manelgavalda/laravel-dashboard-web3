@@ -42,16 +42,16 @@
                                 </div>
                             </td>
                             <td class="p-2">
-                                <div class="text-center">0.004</div>
+                                <div class="text-center">{{ contract.balance }}</div>
                             </td>
                             <td class="p-2">
                                 <div class="text-center text-emerald-500">{{ $filters.currencyUSD(contract.price) }}</div>
                             </td>
                             <td class="p-2">
-                                <div class="text-center text-emerald-700">$6.94</div>
+                                <div class="text-center text-emerald-700">{{ $filters.currencyUSD(contract.price * contract.balance) }}</div>
                             </td>
                             <td class="p-2">
-                                <div class="text-center text-sky-500">0.04</div>
+                                <div class="text-center text-sky-500">{{ (contract.price / ethereumPrice).toFixed(4) }}</div>
                             </td>
                         </tr>
                     </tbody>
@@ -63,7 +63,7 @@
 
 <script>
     export default {
-        props: ['contracts'],
+        props: ['contracts', 'ethereumPrice'],
         data() {
             return { 
                 parsedContracts: [] 

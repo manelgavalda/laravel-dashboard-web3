@@ -17,21 +17,25 @@
         {
             $dataFeed = new DataFeed();
 
-            $networks = $this->getNetworks();
+            $prices = $this->getPrices();
 
-            return view('pages/dashboard/dashboard', compact('dataFeed', 'networks'));
+            $ethereumPrice = $prices['0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE']['price']['usd'];
+
+            $networks = $this->getNetworks($prices);
+
+            return view('pages/dashboard/dashboard', compact('dataFeed', 'ethereumPrice', 'networks'));
         }
 
-        protected function getNetworks() {
+        protected function getNetworks($prices) {
             $networks = config('addresses.networks');
-
-            $prices = $this->getPrices();
             
             foreach($networks as $network => $contracts) {
                 foreach($contracts as $key => $contract) {
                     $price = $prices[$contract['address']]['price']['usd'];
                     
                     $networks[$network][$key]['price'] = $price;
+                    
+                    $networks[$network][$key]['balance'] = 1;
                 }
             }
 

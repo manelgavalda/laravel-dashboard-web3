@@ -54,7 +54,7 @@
 
             <!-- Table (Top Channels) -->
             @foreach($networks as $title => $contracts)
-                <token-balances contracts="{{ json_encode($contracts) }}"></token-balances>
+                <token-balances contracts="{{ json_encode($contracts) }}" ethereum-price={{ $ethereumPrice }}></token-balances>
             @endforeach
 
             <!-- Line chart (Sales Over Time)  -->
