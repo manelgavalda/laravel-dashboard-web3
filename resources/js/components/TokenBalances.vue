@@ -42,7 +42,7 @@
                                 </div>
                             </td>
                             <td class="p-2">
-                                <div class="text-center">{{ contract.balance }}</div>
+                                <div class="text-center">{{ contract.balance.toFixed(3) }}</div>
                             </td>
                             <td class="p-2">
                                 <div class="text-center text-emerald-500">{{ $filters.currencyUSD(contract.price) }}</div>
@@ -51,7 +51,7 @@
                                 <div class="text-center text-emerald-700">{{ $filters.currencyUSD(contract.price * contract.balance) }}</div>
                             </td>
                             <td class="p-2">
-                                <div class="text-center text-sky-500">{{ contract.balance }}</div>
+                                <div class="text-center text-sky-500">{{ ((contract.price * contract.balance) / ethereumPrice).toFixed(3) }}</div>
                             </td>
                         </tr>
                     </tbody>
@@ -95,7 +95,7 @@
                         balance = await ethersContract.balanceOf(ethereumWalletAddress)
                     }
 
-                    contract.balance = (Number(balance) / 1e18).toFixed(3)
+                    contract.balance = Number(balance) / 1e18
                 }
             }
 
