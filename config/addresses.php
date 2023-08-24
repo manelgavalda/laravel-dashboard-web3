@@ -79,7 +79,7 @@ return [
             [
                 'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
                 'type' => 'Ethereum',
-                'name' => 'ETH (Arbitrum)'
+                'name' => 'ETH'
             ],
             [
                 'address' => '0x912ce59144191c1204e64559fe8253a0e49e6548',
@@ -89,19 +89,19 @@ return [
         ],
         'optimism' => [
             [
+                'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+                'type' => 'Ethereum',
+                'name' => 'ETH'
+            ],
+            [
                 'address' => '0xFdb794692724153d1488CcdBE0C56c252596735F',
                 'type' => 'Token',
-                'name' => 'LDO (Optimism)'
+                'name' => 'LDO'
             ],
             [
                 'address' => '0x4200000000000000000000000000000000000042',
                 'type' => 'Token',
                 'name' => 'OP'
-            ],
-            [
-                'address' => '0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb',
-                'type' => 'Token',
-                'name' => 'wstETH'
             ],
             // [
             //     'address' => '0x453f61390ce6DfB668bbF4D93E58c94BB0ae81f3',
@@ -114,13 +114,13 @@ return [
             [
                 'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
                 'type' => 'Ethereum',
-                'name' => 'ETH (Mainnet)'
+                'name' => 'ETH'
             ],
-            [
-                'address' => '0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B',
-                'type' => 'Token',
-                'name' => 'CVX'
-            ],
+            // [
+            //     'address' => '0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B',
+            //     'type' => 'Token',
+            //     'name' => 'CVX'
+            // ],
             // [
             //     'address' => '0xb5b29320d2dde5ba5bafa1ebcd270052070483ec',
             //     'type' => 'Sommelier',

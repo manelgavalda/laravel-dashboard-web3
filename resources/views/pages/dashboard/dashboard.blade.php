@@ -53,8 +53,8 @@
             {{-- <x-dashboard.dashboard-card-06 /> --}}
 
             <!-- Table (Top Channels) -->
-            @foreach($networks as $title => $contracts)
-                <token-balances contracts="{{ json_encode($contracts) }}" ethereum-price={{ $ethereumPrice }}></token-balances>
+            @foreach($networks as $network => $contracts)
+                <token-balances contracts="{{ json_encode($contracts) }}" network="{{ $network }}" ethereum-price="{{ $ethereumPrice }}"></token-balances>
             @endforeach
 
             <!-- Line chart (Sales Over Time)  -->
