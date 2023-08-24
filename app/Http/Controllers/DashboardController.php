@@ -17,13 +17,11 @@
         {
             $dataFeed = new DataFeed();
 
-            $prices = $this->getPrices();
+            $tokens = $this->getTokensWithPrices();
 
-            $ethereumPrice = $prices['0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE']['price']['usd'];
+            $networks = $this->getNetworks($tokens);
 
-            $networks = $this->getNetworks($prices);
-
-            return view('pages/dashboard/dashboard', compact('dataFeed', 'ethereumPrice', 'networks'));
+            return view('pages/dashboard/dashboard', compact('dataFeed', 'networks', 'tokens'));
         }
 
         protected function getNetworks($prices) {
@@ -43,9 +41,9 @@
             return $networks;
         }
 
-        protected function getPrices() {
+        protected function getTokensWithPrices() {
             $tokens = config('addresses.tokens');
-        
+
             $ids = implode(',', array_map(fn ($token) => $token['coingeckoId'], $tokens));
         
             $url = "https://api.coingecko.com/api/v3/simple/price?ids={$ids}&vs_currencies=usd,eur";

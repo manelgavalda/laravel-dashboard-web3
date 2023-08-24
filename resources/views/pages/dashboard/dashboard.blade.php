@@ -36,7 +36,7 @@
 
             <!-- Table (Top Channels) -->
             @foreach($networks as $network => $contracts)
-                <token-balances contracts="{{ json_encode($contracts) }}" network="{{ $network }}" ethereum-price="{{ $ethereumPrice }}"></token-balances>
+                <token-balances contracts="{{ json_encode($contracts) }}" network="{{ $network }}" tokens="{{ json_encode($tokens) }}"></token-balances>
             @endforeach
 
             <!-- Line chart (Acme Plus) -->
