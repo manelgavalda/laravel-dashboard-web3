@@ -87,15 +87,19 @@
                 for (const contract of this.parsedContracts) {
                     let balance = 0
 
+                    let decimals = 18
+
                     if(contract.type == 'Ethereum') {
                         balance = await provider.getBalance(ethereumWalletAddress);
                     } else {
                         let ethersContract = new this.ethers.Contract(contract.address, TOKEN_ABI, provider)
 
                         balance = await ethersContract.balanceOf(ethereumWalletAddress)
+
+                        decimals = await ethersContract.decimals()
                     }
 
-                    contract.balance = Number(balance) / 1e18
+                    contract.balance = Number(balance) / `1e${decimals}`
                 }
             }
 
