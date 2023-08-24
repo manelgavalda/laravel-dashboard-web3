@@ -31,11 +31,12 @@
             
             foreach($networks as $network => $contracts) {
                 foreach($contracts as $key => $contract) {
-                    $price = $prices[$contract['address']]['price']['usd'];
-                    
-                    $networks[$network][$key]['price'] = $price;
-                    
-                    $networks[$network][$key]['balance'] = 1;
+                    $networks[$network][$key]['price'] = 0;
+                    $networks[$network][$key]['balance'] = 0;
+
+                    if(array_key_exists($contract['address'], $prices)) {
+                        $networks[$network][$key]['price'] = $prices[$contract['address']]['price']['usd'];
+                    }
                 }
             }
 
