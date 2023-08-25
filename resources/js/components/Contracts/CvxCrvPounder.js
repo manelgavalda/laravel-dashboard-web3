@@ -10,7 +10,7 @@ export default class CvxCrvPounderPool {
     }
 
     async getBalance(wallet) {
-        return fetch('https://raw.githubusercontent.com/Llama-Airforce/Llama-Airforce-Airdrops/master/ucrv/latest.json')
+        return fetch(import.meta.env.VITE_CVX_CRV_PUNDER_URL)
             .then(response => response.json())
             .then(data => {
                 const addresses = data.claims;
