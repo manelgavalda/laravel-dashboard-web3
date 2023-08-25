@@ -1,7 +1,7 @@
 <template>
     <div class="col-span-full xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
         <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-            <h2 class="font-semibold text-slate-800 dark:text-slate-100">{{ $filters.capitalized(network) }}</h2>
+            <h2 class="font-semibold text-slate-800 dark:text-slate-100">{{ $filters.capitalized(network) }} {{ $filters.currencyUSD(total) }}</h2>
         </header>
         <div class="p-3">
 
@@ -31,7 +31,7 @@
                     <!-- Table body -->
                     <tbody class="text-sm font-medium divide-y divide-slate-100 dark:divide-slate-700">
                         <!-- Row -->
-                        <tr v-for="contract in parsedContracts">
+                        <tr v-for="contract in contracts">
                             <td class="p-2">
                                 <div class="flex items-center">
                                     <svg width="24px" height="24px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg">
@@ -66,8 +66,8 @@
         props: ['contracts', 'tokens', 'network'],
         data() {
             return { 
-                parsedContracts: [],
-                ethereumPrice: 0
+                ethereumPrice: 0,
+                total: 0
             }
         },
         mounted() {
@@ -75,11 +75,7 @@
         },
         methods: {
             async getBalances() {
-                this.parsedContracts = JSON.parse(this.contracts)
-
-                const parsedTokens = JSON.parse(this.tokens)
-
-                this.ethereumPrice = parsedTokens['0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE']['price']['usd'];
+                this.ethereumPrice = this.tokens['0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE']['price']['usd'];
 
                 const alchemyProviderKey = import.meta.env.VITE_ALCHEMY_PROVIDER_KEY
 
@@ -87,7 +83,7 @@
 
                 const ethereumWalletAddress = import.meta.env.VITE_ETHEREUM_WALLET_ADDRESS
 
-                for (const contract of this.parsedContracts) {
+                for (const contract of this.contracts) {
                     const contractClassDefinition = await import(`./Contracts/${contract.type}.js`)
 
                     const contractClass = new contractClassDefinition.default(provider, contract.address, contract.ABI)
@@ -96,9 +92,11 @@
 
                     let decimals = await contractClass.getDecimals()
 
-                    contract.price = await contractClass.getPrice(parsedTokens)
+                    contract.price = await contractClass.getPrice(this.tokens)
 
                     contract.balance = Number(balance) / `1e${decimals}`
+
+                    this.total += contract.price * contract.balance
                 }
             }
 
