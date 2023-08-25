@@ -96,7 +96,11 @@
 
                     contract.balance = Number(balance) / `1e${decimals}`
 
-                    this.total += contract.price * contract.balance
+                    const price = contract.price * contract.balance
+
+                    this.$emit('total-updated', price)
+
+                    this.total += price
                 }
             }
 

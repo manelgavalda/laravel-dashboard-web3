@@ -1,9 +1,16 @@
 <template>
     <template class="grid grid-cols-12 gap-6" v-for="(contracts, network) in networks">
-        <token-balances :contracts="contracts" :network="network" :tokens="tokens"></token-balances>
+        <token-balances
+            @total-updated="updateTotals"
+            :contracts="contracts" 
+            :network="network" 
+            :tokens="tokens"
+        ></token-balances>
     </template>
 
-    <total-balance></total-balance>
+    <total-balance
+        :total="total"
+    ></total-balance>
 </template>
 
 <script>
@@ -14,7 +21,10 @@
                 total: 0,
             }
         },
-        mounted() {
-        },
+        methods: {
+            updateTotals(total) {
+                this.total += total
+            }
+        }
     }
 </script>

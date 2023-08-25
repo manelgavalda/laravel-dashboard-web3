@@ -8,7 +8,16 @@ app.config.globalProperties.ethers = ethers;
 
 app.config.globalProperties.$filters = {
   currencyUSD(value) {
-    return '$' + value.toFixed(2)
+    if (typeof value !== "number") {
+      return value;
+    }
+    
+    var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
+
+    return formatter.format(value);
   },
   capitalized(name) {
     const capitalizedFirst = name[0].toUpperCase();
