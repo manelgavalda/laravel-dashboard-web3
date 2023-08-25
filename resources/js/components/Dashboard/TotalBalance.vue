@@ -33,7 +33,7 @@
         </header>
         <div class="px-5 py-3">
             <div class="flex items-start">
-                <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2 tabular-nums"><span>{{ $filters.currencyUSD(total) }} {{ (eth.toFixed(3)) }}</span></div>
+                <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2 tabular-nums"><span>{{ $filters.currencyUSD(total) }} ({{ eth.toFixed(3) }})</span></div>
                 <div id="dashboard-card-05-deviation" class="text-sm font-semibold text-white px-1.5 rounded-full"></div>
             </div>
         </div>
