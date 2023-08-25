@@ -3,11 +3,13 @@ return [
     'tokens' => [
         '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' => [
             'coingeckoId' => 'ethereum',
-            'name' => 'ETH'
+            'name' => 'ETH',
+            'ABI' => null
         ],
         'bitcoin' => [
             'coingeckoId' => 'bitcoin',
-            'name' => 'BTC'
+            'name' => 'BTC',
+            'ABI' => null
         ]
     ],
     'networks' => [
@@ -15,21 +17,24 @@ return [
             [
                 'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
                 'type' => 'Ethereum',
-                'name' => 'ETH'
+                'name' => 'ETH',
+                'ABI' => null
             ]
         ],
         'optimism' => [
             [
                 'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
                 'type' => 'Ethereum',
-                'name' => 'ETH'
+                'name' => 'ETH',
+                'ABI' => null
             ]
         ],
         'mainnet' => [
             [
                 'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
                 'type' => 'Ethereum',
-                'name' => 'ETH'
+                'name' => 'ETH',
+                'ABI' => null
             ]
         ]
     ]
