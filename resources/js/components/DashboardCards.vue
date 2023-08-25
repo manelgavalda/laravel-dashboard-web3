@@ -10,6 +10,7 @@
 
     <total-balance
         :total="total"
+        :eth="eth"
     ></total-balance>
 </template>
 
@@ -19,11 +20,14 @@
         data() {
             return { 
                 total: 0,
+                eth: 0
             }
         },
         methods: {
             updateTotals(total) {
                 this.total += total
+
+                this.eth = this.total / this.tokens['0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE']['price']['usd'];
             }
         }
     }
