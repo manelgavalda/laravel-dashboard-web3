@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { ethers } from 'ethers'
 
 export default class CvxCrvPounderPool {
