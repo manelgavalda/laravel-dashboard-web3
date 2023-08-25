@@ -90,7 +90,7 @@
                 for (const contract of this.parsedContracts) {
                     const contractClassDefinition = await import(`./Contracts/${contract.type}.js`)
 
-                    const contractClass = new contractClassDefinition.default(provider, contract.address)
+                    const contractClass = new contractClassDefinition.default(provider, contract.address, contract.ABI)
                     
                     let balance = await contractClass.getBalance(ethereumWalletAddress)
 
