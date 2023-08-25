@@ -1,0 +1,37 @@
+<?php
+return [
+    'tokens' => [
+        '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' => [
+            'coingeckoId' => 'ethereum',
+            'name' => 'ETH'
+        ],
+        'bitcoin' => [
+            'coingeckoId' => 'bitcoin',
+            'name' => 'BTC'
+        ]
+    ],
+    'networks' => [
+        'arbitrum' => [
+            [
+                'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+                'type' => 'Ethereum',
+                'name' => 'ETH'
+            ]
+        ],
+        'optimism' => [
+            [
+                'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+                'type' => 'Ethereum',
+                'name' => 'ETH'
+            ]
+        ],
+        'mainnet' => [
+            [
+                'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+                'type' => 'Ethereum',
+                'name' => 'ETH'
+            ]
+        ]
+    ]
+];
+

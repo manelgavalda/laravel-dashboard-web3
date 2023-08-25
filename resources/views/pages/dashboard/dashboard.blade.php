@@ -34,6 +34,11 @@
         <!-- Cards -->
         <div class="grid grid-cols-12 gap-6">
 
+            <!-- Table (Top Channels) -->
+            @foreach($networks as $network => $contracts)
+                <token-balances contracts="{{ json_encode($contracts) }}" network="{{ $network }}" tokens="{{ json_encode($tokens) }}"></token-balances>
+            @endforeach
+
             <!-- Line chart (Acme Plus) -->
             <x-dashboard.dashboard-card-01 :dataFeed="$dataFeed" />
 
@@ -51,9 +56,6 @@
 
             <!-- Doughnut chart (Top Countries) -->
             <x-dashboard.dashboard-card-06 />
-
-            <!-- Table (Top Channels) -->
-            <x-dashboard.dashboard-card-07 />
 
             <!-- Line chart (Sales Over Time)  -->
             <x-dashboard.dashboard-card-08 />

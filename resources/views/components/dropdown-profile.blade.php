@@ -6,8 +6,8 @@
     <button
         class="inline-flex justify-center items-center group"
         aria-haspopup="true"
-        @click.prevent="open = !open"
-        :aria-expanded="open"                        
+        x-on:click.prevent="open = !open"
+        x-bind:aria-expanded="open"                        
     >
         <img class="w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" width="32" height="32" alt="{{ Auth::user()->name }}" />
         <div class="flex items-center truncate">
@@ -19,8 +19,8 @@
     </button>
     <div
         class="origin-top-right z-10 absolute top-full min-w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1 {{$align === 'right' ? 'right-0' : 'left-0'}}"                
-        @click.outside="open = false"
-        @keydown.escape.window="open = false"
+        x-on:click.outside="open = false"
+        x-on:keydown.escape.window="open = false"
         x-show="open"
         x-transition:enter="transition ease-out duration-200 transform"
         x-transition:enter-start="opacity-0 -translate-y-2"
@@ -36,7 +36,7 @@
         </div>
         <ul>
             <li>
-                <a class="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3" href="{{ route('profile.show') }}" @click="open = false" @focus="open = true" @focusout="open = false">Settings</a>
+                <a class="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3" href="{{ route('profile.show') }}" x-on:click="open = false" x-on:focus="open = true" x-on:focusout="open = false">Settings</a>
             </li>
             <li>
                 <form method="POST" action="{{ route('logout') }}" x-data>
@@ -44,9 +44,9 @@
 
                     <a class="font-medium text-sm text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3"
                         href="{{ route('logout') }}"
-                        @click.prevent="$root.submit();"
-                        @focus="open = true"
-                        @focusout="open = false"
+                        x-on:click.prevent="$root.submit();"
+                        x-on:focus="open = true"
+                        x-on:focusout="open = false"
                     >
                         {{ __('Sign Out') }}
                     </a>

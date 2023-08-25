@@ -4,8 +4,8 @@
         class="btn justify-between min-w-44 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-500 hover:text-slate-600 dark:text-slate-300 dark:hover:text-slate-200"
         aria-label="Select date range"
         aria-haspopup="true"
-        @click.prevent="open = !open"
-        :aria-expanded="open" 
+        x-on:click.prevent="open = !open"
+        x-bind:aria-expanded="open" 
     >
         <span class="flex items-center">
             <svg class="w-4 h-4 fill-current text-slate-500 dark:text-slate-400 shrink-0 mr-2" viewBox="0 0 16 16">
@@ -19,8 +19,8 @@
     </button>
     <div
         class="z-10 absolute top-full right-0 w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"                
-        @click.outside="open = false"
-        @keydown.escape.window="open = false"
+        x-on:click.outside="open = false"
+        x-on:keydown.escape.window="open = false"
         x-show="open"
         x-transition:enter="transition ease-out duration-100 transform"
         x-transition:enter-start="opacity-0 -translate-y-2"
@@ -34,12 +34,12 @@
             <button
                 tabindex="0"
                 class="flex items-center w-full hover:bg-slate-50 hover:dark:bg-slate-700/20 py-1 px-3 cursor-pointer"
-                :class="selected === 0 && 'text-indigo-500'"
-                @click="selected = 0;open = false"
-                @focus="open = true"
-                @focusout="open = false"
+               x-bind:class="selected === 0 && 'text-indigo-500'"
+                x-on:click="selected = 0;open = false"
+                x-on:focus="open = true"
+                x-on:focusout="open = false"
             >
-                <svg class="shrink-0 mr-2 fill-current text-indigo-500" :class="selected !== 0 && 'invisible'" width="12" height="9" viewBox="0 0 12 9">
+                <svg class="shrink-0 mr-2 fill-current text-indigo-500"x-bind:class="selected !== 0 && 'invisible'" width="12" height="9" viewBox="0 0 12 9">
                     <path d="M10.28.28L3.989 6.575 1.695 4.28A1 1 0 00.28 5.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28.28z" />
                 </svg>
                 <span>Today</span>
@@ -47,12 +47,12 @@
             <button
                 tabindex="0"
                 class="flex items-center w-full hover:bg-slate-50 hover:dark:bg-slate-700/20 py-1 px-3 cursor-pointer"
-                :class="selected === 1 && 'text-indigo-500'"
-                @click="selected = 1;open = false"
-                @focus="open = true"
-                @focusout="open = false"
+               x-bind:class="selected === 1 && 'text-indigo-500'"
+                x-on:click="selected = 1;open = false"
+                x-on:focus="open = true"
+                x-on:focusout="open = false"
             >
-                <svg class="shrink-0 mr-2 fill-current text-indigo-500" :class="selected !== 1 && 'invisible'" width="12" height="9" viewBox="0 0 12 9">
+                <svg class="shrink-0 mr-2 fill-current text-indigo-500"x-bind:class="selected !== 1 && 'invisible'" width="12" height="9" viewBox="0 0 12 9">
                     <path d="M10.28.28L3.989 6.575 1.695 4.28A1 1 0 00.28 5.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28.28z" />
                 </svg>
                 <span>Last 7 Days</span>
@@ -60,12 +60,12 @@
             <button
                 tabindex="0"
                 class="flex items-center w-full hover:bg-slate-50 hover:dark:bg-slate-700/20 py-1 px-3 cursor-pointer"
-                :class="selected === 2 && 'text-indigo-500'"
-                @click="selected = 2;open = false"
-                @focus="open = true"
-                @focusout="open = false"                                        
+               x-bind:class="selected === 2 && 'text-indigo-500'"
+                x-on:click="selected = 2;open = false"
+                x-on:focus="open = true"
+                x-on:focusout="open = false"                                        
             >
-                <svg class="shrink-0 mr-2 fill-current text-indigo-500" :class="selected !== 2 && 'invisible'" width="12" height="9" viewBox="0 0 12 9">
+                <svg class="shrink-0 mr-2 fill-current text-indigo-500"x-bind:class="selected !== 2 && 'invisible'" width="12" height="9" viewBox="0 0 12 9">
                     <path d="M10.28.28L3.989 6.575 1.695 4.28A1 1 0 00.28 5.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28.28z" />
                 </svg>
                 <span>Last Month</span>
@@ -73,12 +73,12 @@
             <button
                 tabindex="0"
                 class="flex items-center w-full hover:bg-slate-50 hover:dark:bg-slate-700/20 py-1 px-3 cursor-pointer"
-                :class="selected === 3 && 'text-indigo-500'"
-                @click="selected = 3;open = false"
-                @focus="open = true"
-                @focusout="open = false"                                        
+               x-bind:class="selected === 3 && 'text-indigo-500'"
+                x-on:click="selected = 3;open = false"
+                x-on:focus="open = true"
+                x-on:focusout="open = false"                                        
             >
-                <svg class="shrink-0 mr-2 fill-current text-indigo-500" :class="selected !== 3 && 'invisible'" width="12" height="9" viewBox="0 0 12 9">
+                <svg class="shrink-0 mr-2 fill-current text-indigo-500"x-bind:class="selected !== 3 && 'invisible'" width="12" height="9" viewBox="0 0 12 9">
                     <path d="M10.28.28L3.989 6.575 1.695 4.28A1 1 0 00.28 5.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28.28z" />
                 </svg>
                 <span>Last 12 Months</span>
@@ -86,12 +86,12 @@
             <button
                 tabindex="0"
                 class="flex items-center w-full hover:bg-slate-50 hover:dark:bg-slate-700/20 py-1 px-3 cursor-pointer"
-                :class="selected === 4 && 'text-indigo-500'"
-                @click="selected = 4;open = false"
-                @focus="open = true"
-                @focusout="open = false"                                        
+               x-bind:class="selected === 4 && 'text-indigo-500'"
+                x-on:click="selected = 4;open = false"
+                x-on:focus="open = true"
+                x-on:focusout="open = false"                                        
             >
-                <svg class="shrink-0 mr-2 fill-current text-indigo-500" :class="selected !== 4 && 'invisible'" width="12" height="9" viewBox="0 0 12 9">
+                <svg class="shrink-0 mr-2 fill-current text-indigo-500"x-bind:class="selected !== 4 && 'invisible'" width="12" height="9" viewBox="0 0 12 9">
                     <path d="M10.28.28L3.989 6.575 1.695 4.28A1 1 0 00.28 5.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28.28z" />
                 </svg>
                 <span>All Time</span>

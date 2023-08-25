@@ -1,4 +1,28 @@
 import './bootstrap';
+import { createApp } from 'vue';
+import { ethers } from 'ethers';
+
+const app = createApp({});
+
+app.config.globalProperties.ethers = ethers;
+
+app.config.globalProperties.$filters = {
+  currencyUSD(value) {
+    return '$' + value.toFixed(2)
+  },
+  capitalized(name) {
+    const capitalizedFirst = name[0].toUpperCase();
+    const rest = name.slice(1);
+  
+    return capitalizedFirst + rest;
+  }
+}
+
+Object.entries(import.meta.glob('./**/*.vue', { eager: true })).forEach(([path, definition]) => {
+    app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
+});
+
+app.mount('#app');
 
 import Alpine from 'alpinejs';
 
@@ -7,9 +31,6 @@ import { Chart } from 'chart.js';
 
 // Import flatpickr
 import flatpickr from 'flatpickr';
-
-// Import TailwindCSS variables
-import { tailwindConfig } from './utils';
 
 // import component from './components/component';
 import dashboardCard01 from './components/dashboard-card-01';
