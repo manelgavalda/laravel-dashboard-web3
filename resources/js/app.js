@@ -8,7 +8,16 @@ app.config.globalProperties.ethers = ethers;
 
 app.config.globalProperties.$filters = {
   currencyUSD(value) {
-    return '$' + value.toFixed(2)
+    if (typeof value !== "number") {
+      return value;
+    }
+    
+    var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
+
+    return formatter.format(value);
   },
   capitalized(name) {
     const capitalizedFirst = name[0].toUpperCase();
@@ -18,7 +27,7 @@ app.config.globalProperties.$filters = {
   }
 }
 
-Object.entries(import.meta.glob('./**/*.vue', { eager: true })).forEach(([path, definition]) => {
+Object.entries(import.meta.glob('./**/**/*.vue', { eager: true })).forEach(([path, definition]) => {
     app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
 });
 
