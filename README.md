@@ -45,7 +45,7 @@ Then run ``npm run dev`` in the terminal to run a development server to re-compi
 When you have done with changes, run ``npm run build`` for compiling and minify for production.
 
 
-### Setup your config/addresses.php file and add the different networks you use with your token and pool addresses and ABI
+### Setup the config/addresses.php file by adding the various networks you're utilizing, along with the associated token and pool addresses and ABI details.
 ```
 <?php
 return [
