@@ -1,4 +1,4 @@
-# Free Tailwind & Laravel admin dashboard template
+# Laravel Web3 dashboard 
 
 ![Mosaic TailwindCSS template preview](https://raw.githubusercontent.com/manelgavalda/laravel-dashboard-web3/main/public/images/dashboard.png)
 
@@ -6,32 +6,6 @@
 Use it for whatever you want, and be sure to reach us out on [Twitter](https://twitter.com/Cruip_com) if you build anything cool/useful with it.
 
 Created and maintained with ❤️ by [Cruip.com](https://cruip.com/).
-
-## Live demo
-
-Check a live demo here 👉️ [https://mosaic.cruip.com/](https://mosaic.cruip.com/?template=laravel)
-
-## Mosaic Pro
-
-[![Mosaic Pro](https://user-images.githubusercontent.com/2683512/151177961-2ff5b838-3745-48dc-80c8-80b043971483.png)](https://cruip.com/mosaic/)
-
-## Design files
-
-If you need the design files, you can download them from Figma's Community 👉 https://bit.ly/3sigqHe
-
-## Table of contents
-
-* [Usage](#usage)
-  * [Setup your .env config file](#setup-your-env-config-file)
-  * [Install Laravel dependencies](#install-laravel-dependencies)
-  * [Migrate the tables](#migrate-the-tables)
-  * [Generate some test data](#generate-some-test-data)
-  * [Compile the front-end](#compile-the-front-end)
-  * [Launch the Laravel backend](#launch-the-Laravel-backend)        
-* [Credits](#credits)
-* [Terms and License](#terms-and-license)
-* [About Us](#about-us)
-* [Stay in the loop](#stay-in-the-loop)
 
 ## Usage
 
@@ -70,6 +44,52 @@ Then run ``npm run dev`` in the terminal to run a development server to re-compi
 
 When you have done with changes, run ``npm run build`` for compiling and minify for production.
 
+
+### Setup your config/addresses.php file and add the different networks you use with your token and pool addresses and ABI
+```
+<?php
+return [
+    'tokens' => [
+        '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' => [
+            'coingeckoId' => 'ethereum',
+            'name' => 'ETH',
+            'ABI' => null
+        ],
+        'bitcoin' => [
+            'coingeckoId' => 'bitcoin',
+            'name' => 'BTC',
+            'ABI' => null
+        ]
+    ],
+    'networks' => [
+        'arbitrum' => [
+            [
+                'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+                'type' => 'Ethereum',
+                'name' => 'ETH',
+                'ABI' => null
+            ]
+        ],
+        'optimism' => [
+            [
+                'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+                'type' => 'Ethereum',
+                'name' => 'ETH',
+                'ABI' => null
+            ]
+        ],
+        'mainnet' => [
+            [
+                'address' => '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+                'type' => 'Ethereum',
+                'name' => 'ETH',
+                'ABI' => null
+            ]
+        ]
+    ]
+];
+```
+
 ### Launch the Laravel backend
 
 In order to make this Laravel installation work properly on your local machine you
@@ -80,23 +100,3 @@ can run the following command in your terminal window.
 You should receive a message similar to this
 ``Starting Laravel development server: http://127.0.0.1:8000`` simply copy the URL
 in your browser and you'll be ready to test out your new mosaic laravel app.
-
-
-## Credits
-
-- [Nucleo](https://nucleoapp.com/)
-
-## Terms and License
-
-- License 👉 [https://cruip.com/terms/](https://cruip.com/terms/).
-- Copyright 2022 [Cruip](https://cruip.com/).
-- Use it for personal and commercial projects, but please don’t republish, redistribute, or resell the template.
-- Attribution is not required, although it is really appreciated.
-
-## About Us
-
-We're an Italian developer/designer duo creating high-quality design/code resources for developers, makers, and startups.
-
-## Stay in the loop
-
-If you would like to know when we release new resources, you can follow us on [Twitter](https://twitter.com/Cruip_com), or you can subscribe to our monthly [newsletter](https://cruip.com/#subscribe).
