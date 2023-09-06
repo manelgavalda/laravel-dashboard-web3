@@ -2,8 +2,8 @@
     <template class="grid grid-cols-12 gap-6" v-for="(contracts, network) in networks">
         <token-balances
             @total-updated="updateTotals"
-            :contracts="contracts" 
-            :network="network" 
+            :contracts="contracts"
+            :network="network"
             :tokens="tokens"
         ></token-balances>
     </template>
@@ -15,10 +15,10 @@
 </template>
 
 <script>
-    export default {    
+    export default {
         props: ['tokens', 'networks'],
         data() {
-            return { 
+            return {
                 total: 0,
                 eth: 0
             }

@@ -11,7 +11,7 @@ app.config.globalProperties.$filters = {
     if (typeof value !== "number") {
       return value;
     }
-    
+
     var formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'
@@ -22,7 +22,7 @@ app.config.globalProperties.$filters = {
   capitalized(name) {
     const capitalizedFirst = name[0].toUpperCase();
     const rest = name.slice(1);
-  
+
     return capitalizedFirst + rest;
   }
 }
@@ -149,5 +149,5 @@ document.addEventListener('DOMContentLoaded', () => {
   dashboardCard06();
   dashboardCard08();
   dashboardCard09();
-  dashboardCard11();
+//  dashboardCard11();
 });
