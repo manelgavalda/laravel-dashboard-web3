@@ -149,5 +149,5 @@ document.addEventListener('DOMContentLoaded', () => {
   dashboardCard06();
   dashboardCard08();
   dashboardCard09();
-//  dashboardCard11();
+  dashboardCard11();
 });
