@@ -4,9 +4,7 @@ use App\Models\User;
 use App\Contracts\DatabaseService;
 
 it('gets the balance history', function () {
-    $this->app->bind(DatabaseService::class, fn() =>
-        new FakeDatabaseService('fakeApiKey', 'fakeUrl')
-    );
+    bindFakeDatabaseService();
 
     $this->actingAs(User::factory()->create());
 
@@ -19,13 +17,15 @@ it('gets the balance history', function () {
          ]);
 });
 
-class FakeDatabaseService implements DatabaseService
-{
-    public function __construct($apiKey, $url){}
+function bindFakeDatabaseService() {
+    app()->bind(DatabaseService::class, fn() => new class('fakeApiKey', 'fakeUrl') implements DatabaseService {
+        public function __construct($apiKey, $url) {
+        }
 
-    public function getResults() {
-        return json_decode(File::get(
-            base_path() . '/tests/Feature/responses/get_historical_balances.json'
-        ));
-    }
+        public function getResults() {
+            return json_decode(File::get(
+                base_path() . '/tests/Feature/responses/get_historical_balances.json'
+            ));
+        }
+    });
 }
