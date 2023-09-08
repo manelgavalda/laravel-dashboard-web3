@@ -3,6 +3,8 @@
 use App\Models\User;
 use App\Contracts\DatabaseService;
 
+uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
+
 it('gets the balance history', function () {
     bindFakeDatabaseService();
 
