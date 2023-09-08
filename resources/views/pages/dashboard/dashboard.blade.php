@@ -53,9 +53,6 @@
             <!-- Doughnut chart (Top Countries) -->
             <x-dashboard.dashboard-card-06 />
 
-            <!-- Line chart (Sales Over Time)  -->
-            <x-dashboard.dashboard-card-08 />
-
             <!-- Stacked bar chart (Sales VS Refunds) -->
             <x-dashboard.dashboard-card-09 />
 
