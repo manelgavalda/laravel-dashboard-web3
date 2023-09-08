@@ -51,7 +51,7 @@
       methods: {
       },
       mounted() {
-        fetch('/get-historic-balances')
+        fetch('/get-balance-history')
           .then(a => a.json())
           .then(response => populateCharts(response))
       }

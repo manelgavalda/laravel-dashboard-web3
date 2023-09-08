@@ -44,11 +44,11 @@ export function populateCharts(response) {
   const chart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: response.labels.map(date => new Date(date)),
+      labels: Object.keys(response).map(date => new Date(date)),
       datasets: [
         // Indigo line
         {
-          data: response.data,
+          data: Object.values(response),
           fill: true,
           backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
           borderColor: tailwindConfig().theme.colors.indigo[500],

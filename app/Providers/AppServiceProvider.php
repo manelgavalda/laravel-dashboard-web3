@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Contracts\DatabaseService;
 use Illuminate\Support\ServiceProvider;
+use App\Services\SupabaseDatabaseService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(DatabaseService::class, function() {
+            return new SupabaseDatabaseService(
+                config('supabase.api_key'),
+                config('supabase.url')
+            );
+        });
     }
 
     /**
