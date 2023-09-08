@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\HistoricBalancesController;
+use App\Http\Controllers\GetHistoricBalances;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Route for the getting the data feed
     Route::get('/json-data-feed', [DataFeedController::class, 'getDataFeed'])->name('json_data_feed');
 
-    Route::get('/get-historic-balances', [HistoricBalancesController::class, 'get'])->name('get_historic_balances');
+    Route::get('/get-historic-balances', GetHistoricBalances::class)->name('get_historic_balances');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::fallback(function() {

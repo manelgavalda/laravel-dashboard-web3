@@ -2,9 +2,9 @@
 
     namespace App\Http\Controllers;
 
-    class HistoricBalancesController extends ApiController
+    class GetHistoricBalances extends ApiController
     {
-        public function get()
+        public function __invoke()
         {
             $response = $this->getService()
                 ->initializeDatabase('totals', 'id')
