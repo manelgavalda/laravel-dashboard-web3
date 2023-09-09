@@ -13,9 +13,9 @@ it('gets the balance history', function () {
     $this->get('get-balance-history')
          ->assertJsonCount(30)
          ->assertSeeTextInOrder([
-             '2023-09-06' => 60000,
-             '2023-09-07' => 30000,
-             '2023-09-08' => 10000,
+            '2023-09-08', 'balance', 10, 'price', 1000,
+            '2023-09-07', 'balance', 15, 'price', 2000,
+            '2023-09-06', 'balance', 20, 'price', 3000,
          ]);
 });
 

@@ -34,14 +34,49 @@ export function populateCharts(response) {
     light: '#e2e8f0',
     dark: '#475569'
   };
+
   const chart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: Object.keys(response).map(date => new Date(date)),
       datasets: [
+        // emerald line
         {
-          label: 'Current', // Indigo line
-          data: Object.values(response),
+          label: 'Total',
+          data: Object.values(response).map(item => item.price * item.balance),
+          borderColor: tailwindConfig().theme.colors.emerald[500],
+          fill: false,
+          borderWidth: 2,
+          tension: 0,
+          pointRadius: 0,
+          pointHoverRadius: 3,
+          pointBackgroundColor: tailwindConfig().theme.colors.emerald[500],
+          pointHoverBackgroundColor: tailwindConfig().theme.colors.emerald[500],
+          pointBorderWidth: 0,
+          pointHoverBorderWidth: 0,
+          clip: 20,
+        },
+        // Blue line
+        {
+          label: 'Price',
+          data: Object.values(response).map(item => item.price),
+          borderColor: tailwindConfig().theme.colors.indigo[500],
+          borderColor: tailwindConfig().theme.colors.blue[400],
+          fill: false,
+          borderWidth: 2,
+          tension: 0,
+          pointRadius: 0,
+          pointHoverRadius: 3,
+          pointBackgroundColor: tailwindConfig().theme.colors.blue[400],
+          pointHoverBackgroundColor: tailwindConfig().theme.colors.blue[400],
+          pointBorderWidth: 0,
+          pointHoverBorderWidth: 0,
+          clip: 20,
+        },
+        // Indigo line
+        {
+          label: 'Balance',
+          data: Object.values(response).map(item => item.balance),
           borderColor: tailwindConfig().theme.colors.indigo[500],
           fill: false,
           borderWidth: 2,
@@ -54,38 +89,6 @@ export function populateCharts(response) {
           pointHoverBorderWidth: 0,
           clip: 20,
         },
-        // Blue line
-        // {
-        //   label: 'Previous',
-        //   data: dataset2,
-        //   borderColor: tailwindConfig().theme.colors.blue[400],
-        //   fill: false,
-        //   borderWidth: 2,
-        //   tension: 0,
-        //   pointRadius: 0,
-        //   pointHoverRadius: 3,
-        //   pointBackgroundColor: tailwindConfig().theme.colors.blue[400],
-        //   pointHoverBackgroundColor: tailwindConfig().theme.colors.blue[400],
-        //   pointBorderWidth: 0,
-        //   pointHoverBorderWidth: 0,
-        //   clip: 20,
-        // },
-        // // emerald line
-        // {
-        //   label: 'Average',
-        //   data: dataset3,
-        //   borderColor: tailwindConfig().theme.colors.emerald[500],
-        //   fill: false,
-        //   borderWidth: 2,
-        //   tension: 0,
-        //   pointRadius: 0,
-        //   pointHoverRadius: 3,
-        //   pointBackgroundColor: tailwindConfig().theme.colors.emerald[500],
-        //   pointHoverBackgroundColor: tailwindConfig().theme.colors.emerald[500],
-        //   pointBorderWidth: 0,
-        //   pointHoverBorderWidth: 0,
-        //   clip: 20,
-        // },
       ],
     },
     options: {
