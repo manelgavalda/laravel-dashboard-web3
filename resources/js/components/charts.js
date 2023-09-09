@@ -1,11 +1,10 @@
-import 'chartjs-adapter-moment';
-import { tailwindConfig, formatValue, hexToRGB } from '../utils';
-import { Chart, LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip,} from 'chart.js';
+import { tailwindConfig, formatValue } from '../utils';
+import { Chart, LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip, } from 'chart.js';
+
+Chart.register(LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip);
 
 export function populateCharts(response) {
-  Chart.register(LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip);
-
-  const ctx = document.getElementById('dashboard-card-05');
+  const ctx = document.getElementById('dashboard-card-08');
 
   if (!ctx) return;
 
@@ -19,11 +18,6 @@ export function populateCharts(response) {
   const gridColor = {
     light: '#f1f5f9',
     dark: '#334155'
-  };
-
-  const tooltipTitleColor = {
-    light: '#1e293b',
-    dark: '#f1f5f9'
   };
 
   const tooltipBodyColor = {
@@ -46,12 +40,45 @@ export function populateCharts(response) {
     data: {
       labels: Object.keys(response).map(date => new Date(date)),
       datasets: [
+        // emerald line
+        {
+          label: 'Total',
+          data: Object.values(response).map(item => item.price * item.balance),
+          borderColor: tailwindConfig().theme.colors.emerald[500],
+          fill: false,
+          borderWidth: 2,
+          tension: 0,
+          pointRadius: 0,
+          pointHoverRadius: 3,
+          pointBackgroundColor: tailwindConfig().theme.colors.emerald[500],
+          pointHoverBackgroundColor: tailwindConfig().theme.colors.emerald[500],
+          pointBorderWidth: 0,
+          pointHoverBorderWidth: 0,
+          clip: 20,
+        },
+        // Blue line
+        {
+          label: 'Price',
+          data: Object.values(response).map(item => item.price),
+          borderColor: tailwindConfig().theme.colors.indigo[500],
+          borderColor: tailwindConfig().theme.colors.blue[400],
+          fill: false,
+          borderWidth: 2,
+          tension: 0,
+          pointRadius: 0,
+          pointHoverRadius: 3,
+          pointBackgroundColor: tailwindConfig().theme.colors.blue[400],
+          pointHoverBackgroundColor: tailwindConfig().theme.colors.blue[400],
+          pointBorderWidth: 0,
+          pointHoverBorderWidth: 0,
+          clip: 20,
+        },
         // Indigo line
         {
-          data: Object.values(response),
-          fill: true,
-          backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
+          label: 'Balance',
+          data: Object.values(response).map(item => item.balance),
           borderColor: tailwindConfig().theme.colors.indigo[500],
+          fill: false,
           borderWidth: 2,
           tension: 0,
           pointRadius: 0,
@@ -70,11 +97,10 @@ export function populateCharts(response) {
       },
       scales: {
         y: {
+          beginAtZero: true,
           border: {
             display: false,
           },
-          suggestedMin: 30,
-          suggestedMax: 80,
           ticks: {
             maxTicksLimit: 5,
             callback: (value) => formatValue(value),
@@ -87,11 +113,10 @@ export function populateCharts(response) {
         x: {
           type: 'time',
           time: {
-            parser: 'hh:mm:ss',
-            // unit: 'second',
-            tooltipFormat: 'MMM DD, H:mm:ss a',
+            parser: 'MM-DD-YYYY',
+            unit: 'day',
             displayFormats: {
-              second: 'H:mm:ss',
+              month: 'MMM YY',
             },
           },
           border: {
@@ -111,14 +136,15 @@ export function populateCharts(response) {
         legend: {
           display: false,
         },
+        htmlLegend: {
+          // ID of the container to put the legend in
+          containerID: 'dashboard-card-08-legend',
+        },
         tooltip: {
-          titleFont: {
-            weight: '600',
-          },
           callbacks: {
+            title: () => false, // Disable tooltip title
             label: (context) => formatValue(context.parsed.y),
           },
-          titleColor: darkMode ? tooltipTitleColor.dark : tooltipTitleColor.light,
           bodyColor: darkMode ? tooltipBodyColor.dark : tooltipBodyColor.light,
           backgroundColor: darkMode ? tooltipBgColor.dark : tooltipBgColor.light,
           borderColor: darkMode ? tooltipBorderColor.dark : tooltipBorderColor.light,
@@ -128,47 +154,57 @@ export function populateCharts(response) {
         intersect: false,
         mode: 'nearest',
       },
-      animation: false,
       maintainAspectRatio: false,
     },
+    plugins: [{
+      id: 'htmlLegend',
+      afterUpdate(c, args, options) {
+        const legendContainer = document.getElementById(options.containerID);
+        const ul = legendContainer.querySelector('ul');
+        if (!ul) return;
+        // Remove old legend items
+        while (ul.firstChild) {
+          ul.firstChild.remove();
+        }
+        // Reuse the built-in legendItems generator
+        const items = c.options.plugins.legend.labels.generateLabels(c);
+        items.slice(0, 2).forEach((item) => {
+          const li = document.createElement('li');
+          li.style.marginLeft = tailwindConfig().theme.margin[3];
+          // Button element
+          const button = document.createElement('button');
+          button.style.display = 'inline-flex';
+          button.style.alignItems = 'center';
+          button.style.opacity = item.hidden ? '.3' : '';
+          button.onclick = () => {
+            c.setDatasetVisibility(item.datasetIndex, !c.isDatasetVisible(item.datasetIndex));
+            c.update();
+          };
+          // Color box
+          const box = document.createElement('span');
+          box.style.display = 'block';
+          box.style.width = tailwindConfig().theme.width[3];
+          box.style.height = tailwindConfig().theme.height[3];
+          box.style.borderRadius = tailwindConfig().theme.borderRadius.full;
+          box.style.marginRight = tailwindConfig().theme.margin[2];
+          box.style.borderWidth = '3px';
+          box.style.borderColor = c.data.datasets[item.datasetIndex].borderColor;
+          box.style.pointerEvents = 'none';
+          // Label
+          const label = document.createElement('span');
+          label.classList.add('text-slate-500', 'dark:text-slate-400');
+          label.style.fontSize = tailwindConfig().theme.fontSize.sm[0];
+          label.style.lineHeight = tailwindConfig().theme.fontSize.sm[1].lineHeight;
+          const labelText = document.createTextNode(item.text);
+          label.appendChild(labelText);
+          li.appendChild(button);
+          button.appendChild(box);
+          button.appendChild(label);
+          ul.appendChild(li);
+        });
+      },
+    }],
   });
-
-  // Fake real-time
-  // For demo purposes only!
-  // let increment = 0;
-  // const chartValue = document.getElementById('dashboard-card-05-value');
-  // const chartDeviation = document.getElementById('dashboard-card-05-deviation');
-
-  // const adddata = (value = NaN, prev) => {
-  //   const { datasets } = chart.data;
-  //   chart.data.labels.shift();
-  //   chart.data.labels.push(new Date());
-  //   datasets[0].data.shift();
-  //   datasets[0].data.push(value);
-  //   chart.update(0);
-  //   if (!chartValue) return;
-  //   const diff = ((value - prev) / prev) * 100;
-  //   chartValue.innerHTML = value;
-  //   if (!chartDeviation) return;
-  //   if (diff < 0) {
-  //     chartDeviation.style.backgroundColor = tailwindConfig().theme.colors.amber[500];
-  //   } else {
-  //     chartDeviation.style.backgroundColor = tailwindConfig().theme.colors.emerald[500];
-  //   }
-  //   chartDeviation.innerHTML = `${diff > 0 ? '+' : ''}${diff.toFixed(2)}%`;
-  // };
-
-  // const reload = () => {
-  //   increment += 1;
-  //   if (increment - 1 < result.data.length) {
-  //     adddata(result.data[increment - 1], result.data[increment - 2]);
-  //   } else {
-  //     increment = 0;
-  //     adddata(result.data[increment - 1], result.data[result.data.length - 1]);
-  //   }
-  // };
-
-  // reload();
 
   document.addEventListener('darkMode', (e) => {
     const { mode } = e.detail;
@@ -176,7 +212,6 @@ export function populateCharts(response) {
       chart.options.scales.x.ticks.color = textColor.dark;
       chart.options.scales.y.ticks.color = textColor.dark;
       chart.options.scales.y.grid.color = gridColor.dark;
-      chart.options.plugins.tooltip.titleColor = tooltipTitleColor.dark;
       chart.options.plugins.tooltip.bodyColor = tooltipBodyColor.dark;
       chart.options.plugins.tooltip.backgroundColor = tooltipBgColor.dark;
       chart.options.plugins.tooltip.borderColor = tooltipBorderColor.dark;
@@ -184,11 +219,10 @@ export function populateCharts(response) {
       chart.options.scales.x.ticks.color = textColor.light;
       chart.options.scales.y.ticks.color = textColor.light;
       chart.options.scales.y.grid.color = gridColor.light;
-      chart.options.plugins.tooltip.titleColor = tooltipTitleColor.light;
       chart.options.plugins.tooltip.bodyColor = tooltipBodyColor.light;
       chart.options.plugins.tooltip.backgroundColor = tooltipBgColor.light;
       chart.options.plugins.tooltip.borderColor = tooltipBorderColor.light;
     }
     chart.update('none');
   });
-}
+};

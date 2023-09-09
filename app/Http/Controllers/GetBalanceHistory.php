@@ -12,7 +12,10 @@
                 ->sortByDesc('created_at')
                 ->take(30)
                 ->mapWithKeys(fn ($item) => [
-                    $item->created_at => $item->balance * $item->price
+                    $item->created_at => [
+                        'balance' => $item->balance,
+                        'price' => $item->price
+                    ]
                 ]);
         }
     }
