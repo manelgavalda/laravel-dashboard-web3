@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Laravel\Fortify\Fortify;
 use App\Contracts\DatabaseService;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\ServiceProvider;
 use App\Services\SupabaseDatabaseService;
 
@@ -30,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Fortify::authenticateUsing(fn ($request) =>
+            $request->email === config('credentials.email') && $request->password === config('credentials.password')
+            ? User::first()
+            : null
+        );
     }
 }
