@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\URL;
 use Laravel\Fortify\Fortify;
 use App\Contracts\DatabaseService;
 use Illuminate\Foundation\Auth\User;
@@ -32,6 +33,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
+
         Fortify::authenticateUsing(fn ($request) =>
             $request->email === config('credentials.email') && $request->password === config('credentials.password')
             ? User::first()
