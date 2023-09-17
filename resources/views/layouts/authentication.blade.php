@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/js/app.js'])
         <script>
             if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
                 document.querySelector('html').classList.remove('dark');
@@ -20,7 +20,7 @@
                 document.querySelector('html').classList.add('dark');
                 document.querySelector('html').style.colorScheme = 'dark';
             }
-        </script>          
+        </script>
     </head>
     <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
 
@@ -74,6 +74,6 @@
 
             </div>
 
-        </main>        
+        </main>
     </body>
 </html>
