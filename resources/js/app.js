@@ -1,6 +1,8 @@
 import './bootstrap';
 import { createApp } from 'vue';
 import { ethers } from 'ethers';
+import '../css/app.css'
+import '../sass/app.scss'
 
 const app = createApp({});
 
