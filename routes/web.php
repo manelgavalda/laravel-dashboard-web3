@@ -16,6 +16,15 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
+function vercel_asset($path)
+{
+    if(app()->environment('production')) {
+        return config('assets.url') . $path;
+    }
+
+    return config('url') . $path;
+}
+
 Route::redirect('/', 'login');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
