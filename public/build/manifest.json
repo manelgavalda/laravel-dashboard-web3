@@ -1,0 +1,79 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-4129e4d7.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.js": {
+    "dynamicImports": [
+      "resources/js/components/Dashboard/Contracts/BeefyPool.js",
+      "resources/js/components/Dashboard/Contracts/ConvexPool.js",
+      "resources/js/components/Dashboard/Contracts/CvxCrvPounder.js",
+      "resources/js/components/Dashboard/Contracts/Ethereum.js",
+      "resources/js/components/Dashboard/Contracts/LockedCvx.js",
+      "resources/js/components/Dashboard/Contracts/Sommelier.js",
+      "resources/js/components/Dashboard/Contracts/Token.js"
+    ],
+    "file": "assets/app-b9303b25.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/components/Dashboard/Contracts/BeefyPool.js": {
+    "file": "assets/BeefyPool-31144ffd.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/components/Dashboard/Contracts/BeefyPool.js"
+  },
+  "resources/js/components/Dashboard/Contracts/ConvexPool.js": {
+    "file": "assets/ConvexPool-03e032ba.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/components/Dashboard/Contracts/ConvexPool.js"
+  },
+  "resources/js/components/Dashboard/Contracts/CvxCrvPounder.js": {
+    "file": "assets/CvxCrvPounder-132c1ac4.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/components/Dashboard/Contracts/CvxCrvPounder.js"
+  },
+  "resources/js/components/Dashboard/Contracts/Ethereum.js": {
+    "file": "assets/Ethereum-9d6479a0.js",
+    "isDynamicEntry": true,
+    "src": "resources/js/components/Dashboard/Contracts/Ethereum.js"
+  },
+  "resources/js/components/Dashboard/Contracts/LockedCvx.js": {
+    "file": "assets/LockedCvx-b11ee247.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/components/Dashboard/Contracts/LockedCvx.js"
+  },
+  "resources/js/components/Dashboard/Contracts/Sommelier.js": {
+    "file": "assets/Sommelier-dda5c3eb.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/components/Dashboard/Contracts/Sommelier.js"
+  },
+  "resources/js/components/Dashboard/Contracts/Token.js": {
+    "file": "assets/Token-28432abc.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/components/Dashboard/Contracts/Token.js"
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-fabb6531.css",
+    "isEntry": true,
+    "src": "resources/sass/app.scss"
+  }
+}
