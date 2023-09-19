@@ -11,7 +11,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link rel="stylesheet" href="{{ vercel_asset('build/assets/app.css')}}">
+        <link rel="stylesheet" href="{{ vercel_asset('build/assets/app2.css')}}">
+        <link rel="stylesheet" href="{{ vercel_asset('build/assets/app3.js')}}">
+
         <base href=".">
         <script>
             if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
