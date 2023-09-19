@@ -41,7 +41,7 @@
         }
 
         protected function getTokensWithPrices() {
-            $tokens = config('addresses.tokens');
+            $tokens = config('addredsses.tokens', []);
 
             $ids = implode(',', array_map(fn ($token) => $token['coingeckoId'], $tokens));
 
