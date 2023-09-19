@@ -2,8 +2,8 @@
 
     namespace App\Http\Controllers;
 
-    use Illuminate\Support\Facades\Http;
     use App\Models\DataFeed;
+    use Illuminate\Support\Facades\Http;
 
     class DashboardController extends Controller
     {
@@ -17,16 +17,14 @@
         {
             $dataFeed = new DataFeed();
 
-            // $tokens = $this->getTokensWithPrices();
-            // $networks = $this->getNetworks($tokens);
-            $tokens = [];
-            $networks = [];
+            $tokens = $this->getTokensWithPrices();
+            $networks = $this->getNetworks($tokens);
 
             return view('pages/dashboard/dashboard', compact('dataFeed', 'networks', 'tokens'));
         }
 
         protected function getNetworks($prices) {
-            $networks = config('addresses.networks');
+            $networks = config('addresses.networks', []);
 
             foreach($networks as $network => $contracts) {
                 foreach($contracts as $key => $contract) {

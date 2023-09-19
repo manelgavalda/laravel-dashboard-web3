@@ -39,34 +39,34 @@
             ></dashboard-cards>
 
             <!-- Line chart (Acme Plus) -->
-            <x-dashboard.dashboard-card-01 :dataFeed="$dataFeed" />
+            {{-- <x-dashboard.dashboard-card-01 :dataFeed="$dataFeed" /> --}}
 
-            <!-- Line chart (Acme Advanced) -->
-            <x-dashboard.dashboard-card-02 :dataFeed="$dataFeed" />
+            {{-- <!-- Line chart (Acme Advanced) --> --}}
+            {{-- <x-dashboard.dashboard-card-02 :dataFeed="$dataFeed" /> --}}
 
-            <!-- Line chart (Acme Professional) -->
-            <x-dashboard.dashboard-card-03 :dataFeed="$dataFeed" />
+            {{-- <!-- Line chart (Acme Professional) --> --}}
+            {{-- <x-dashboard.dashboard-card-03 :dataFeed="$dataFeed" /> --}}
 
-            <!-- Bar chart (Direct vs Indirect) -->
-            <x-dashboard.dashboard-card-04 />
+            {{-- <!-- Bar chart (Direct vs Indirect) --> --}}
+            {{-- <x-dashboard.dashboard-card-04 /> --}}
 
-            <!-- Doughnut chart (Top Countries) -->
-            <x-dashboard.dashboard-card-06 />
+            {{-- <!-- Doughnut chart (Top Countries) --> --}}
+            {{-- <x-dashboard.dashboard-card-06 /> --}}
 
-            <!-- Stacked bar chart (Sales VS Refunds) -->
-            <x-dashboard.dashboard-card-09 />
+            {{-- <!-- Stacked bar chart (Sales VS Refunds) --> --}}
+            {{-- <x-dashboard.dashboard-card-09 /> --}}
 
-            <!-- Card (Customers)  -->
-            <x-dashboard.dashboard-card-10 />
+            {{-- <!-- Card (Customers)  --> --}}
+            {{-- <x-dashboard.dashboard-card-10 /> --}}
 
-            <!-- Card (Reasons for Refunds)   -->
-            <x-dashboard.dashboard-card-11 />
+            {{-- <!-- Card (Reasons for Refunds)   --> --}}
+            {{-- <x-dashboard.dashboard-card-11 /> --}}
 
-            <!-- Card (Recent Activity) -->
-            <x-dashboard.dashboard-card-12 />
+            {{-- <!-- Card (Recent Activity) --> --}}
+            {{-- <x-dashboard.dashboard-card-12 /> --}}
 
-            <!-- Card (Income/Expenses) -->
-            <x-dashboard.dashboard-card-13 />
+            {{-- <!-- Card (Income/Expenses) --> --}}
+            {{-- <x-dashboard.dashboard-card-13 /> --}}
 
         </div>
 

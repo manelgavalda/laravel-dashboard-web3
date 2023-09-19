@@ -14,9 +14,10 @@
         @livewireStyles
 
         <!-- Scripts -->
-        <link rel="stylesheet" href="{{ vercel_asset('build/assets/app.css')}}">
+        <link rel="preload" as="style" href="{{ vercel_asset('build/assets/app2.css')}}">
+        <link rel="modulepreload" href="{{ vercel_asset('build/assets/app3.js') }}">
         <link rel="stylesheet" href="{{ vercel_asset('build/assets/app2.css')}}">
-        <script type="text/javascript" src="{{ vercel_asset('build/assets/app3.js')}}">
+        <script type="module" src="{{ vercel_asset('build/assets/app3.js') }}"></script>
 
         <script>
             if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {

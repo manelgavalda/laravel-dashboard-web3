@@ -1,12 +1,12 @@
 <template>
-    <template class="grid grid-cols-12 gap-6" v-for="(contracts, network) in networks">
-        <token-balances
-            @total-updated="updateTotals"
-            :contracts="contracts"
-            :network="network"
-            :tokens="tokens"
-        ></token-balances>
-    </template>
+    <!-- <template class="grid grid-cols-12 gap-6" v-for="(contracts, network) in networks"> -->
+    <!--     <token-balances -->
+    <!--         @total-updated="updateTotals" -->
+    <!--         :contracts="contracts" -->
+    <!--         :network="network" -->
+    <!--         :tokens="tokens" -->
+    <!--     ></token-balances> -->
+    <!-- </template> -->
 
     <total-balance
         :total="total"
