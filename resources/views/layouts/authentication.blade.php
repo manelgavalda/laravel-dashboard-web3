@@ -11,9 +11,9 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
-        <link rel="stylesheet" type="text/css" href="{{ vercel_asset('build/assets/app.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{ vercel_asset('build/assets/app2.css')}}">
-        <script type="text/javascript" src="{{ vercel_asset('build/assets/app3.js')}}"></script>
+        <link rel="stylesheet" href="{{ vercel_asset('build/assets/app.css')}}">
+        <link rel="stylesheet" href="{{ vercel_asset('build/assets/app2.css')}}">
+        <script src="{{ vercel_asset('build/assets/app3.js')}}"></script>
 
         <base href=".">
         <script>
