@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
 use Laravel\Fortify\Fortify;
 use App\Contracts\DatabaseService;
@@ -33,14 +34,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if($this->app->environment('production')) {
+        // if($this->app->environment('production')) {
             URL::forceScheme('https');
-        }
+        // }
 
         Fortify::authenticateUsing(fn ($request) =>
             $request->email === config('credentials.email') && $request->password === config('credentials.password')
             ? User::first()
             : null
         );
+
+        Blade::directive('vite', function ($expression) {
+            // Your custom logic here
+            return "<?php if(customCondition{$expression}): ?>";
+        });
     }
 }
