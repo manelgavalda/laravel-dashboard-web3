@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        <link rel="shortcut icon" href="{{ vercel_asset('favicon.ico') }}">
         <!-- Scripts -->
         <link rel="preload" as="style" href="{{ vercel_asset('build/assets/app2.css')}}">
         <link rel="modulepreload" href="{{ vercel_asset('build/assets/app3.js') }}">
