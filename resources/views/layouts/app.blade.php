@@ -14,7 +14,10 @@
         @livewireStyles
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link rel="stylesheet" href="{{ vercel_asset('build/assets/app.css')}}">
+        <link rel="stylesheet" href="{{ vercel_asset('build/assets/app2.css')}}">
+        <script type="text/javascript" src="{{ vercel_asset('build/assets/app3.js')}}">
+
         <script>
             if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
                 document.querySelector('html').classList.remove('dark');
