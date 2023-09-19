@@ -13,7 +13,7 @@
         <!-- Scripts -->
         <link rel="stylesheet" href="{{ vercel_asset('build/assets/app.css')}}">
         <link rel="stylesheet" href="{{ vercel_asset('build/assets/app2.css')}}">
-        <script src="{{ vercel_asset('build/assets/app3.js')}}"></script>
+        <script type="text/javascript" src="{{ vercel_asset('build/assets/app3.js')}}">
 
         <base href=".">
         <script>
