@@ -18,9 +18,9 @@ use App\Http\Controllers\DashboardController;
 
 function vercel_asset($path)
 {
-    if(app()->environment('production')) {
+    // if(app()->environment('production')) {
         return config('assets.url') . $path;
-    }
+    // }
 
     return config('url') . $path;
 }
