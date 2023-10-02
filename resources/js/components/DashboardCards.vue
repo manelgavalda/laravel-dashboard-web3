@@ -9,14 +9,12 @@
     <!-- </template> -->
 
     <total-balance
-        :total="total"
-        :eth="eth"
     ></total-balance>
 </template>
 
 <script>
     export default {
-        props: ['tokens', 'networks'],
+        props: ['historicalBalances'],
         data() {
             return {
                 total: 0,

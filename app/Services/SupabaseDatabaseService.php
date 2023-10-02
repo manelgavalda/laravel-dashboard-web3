@@ -16,9 +16,16 @@ class SupabaseDatabaseService implements DatabaseService
         return new Service($this->apiKey, $this->url);
     }
 
-    public function getResults() {
+    public function getHistoricalBalances() {
         return $this->get()
             ->initializeDatabase('totals', 'id')
+            ->fetchAll()
+            ->getResult();
+    }
+
+    public function getTokens() {
+        return $this->get()
+            ->initializeDatabase('balances', 'id')
             ->fetchAll()
             ->getResult();
     }

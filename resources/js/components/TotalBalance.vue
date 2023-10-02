@@ -24,13 +24,20 @@
     import { populateCharts } from '../charts'
 
     export default {
-      props: ['total', 'eth'],
-      methods: {
+      props: ['historicalBalances'],
+      data() {
+          return {
+              eth: 0,
+              total: 0
+          }
       },
       mounted() {
-        fetch('/get-balance-history')
-          .then(a => a.json())
-          .then(response => populateCharts(response))
+        const latest = Object.values(this.historicalBalances)[0];
+
+        this.eth = latest.balance
+        this.total = this.eth * latest.price
+
+        populateCharts(this.historicalBalances)
       }
     }
 </script>

@@ -33,10 +33,12 @@
 
         <!-- Cards -->
         <div class="grid grid-cols-12 gap-6">
-            <dashboard-cards
-                :networks="{{ json_encode($networks) }}"
-                :tokens="{{ json_encode($tokens) }}"
-            ></dashboard-cards>
+            <total-balance
+                :historical-balances="{{ json_encode($historicalBalances) }}"
+            ></total-balance>
+            {{-- <dashboard-cards --}}
+            {{--     :historical-balances="{{ json_encode($historicalBalances) }}" --}}
+            {{-- ></dashboard-cards> --}}
 
             <!-- Line chart (Acme Plus) -->
             {{-- <x-dashboard.dashboard-card-01 :dataFeed="$dataFeed" /> --}}

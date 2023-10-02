@@ -27,7 +27,7 @@ app.config.globalProperties.$filters = {
   }
 }
 
-Object.entries(import.meta.glob('./**/**/*.vue', { eager: true })).forEach(([path, definition]) => {
+Object.entries(import.meta.glob('./**/*.vue', { eager: true })).forEach(([path, definition]) => {
     app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
 });
 

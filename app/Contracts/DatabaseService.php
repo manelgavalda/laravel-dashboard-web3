@@ -6,5 +6,7 @@ interface DatabaseService
 {
     public function __construct($apiKey, $url);
 
-    public function getResults();
+    public function getHistoricalBalances();
+
+    public function getTokens();
 }

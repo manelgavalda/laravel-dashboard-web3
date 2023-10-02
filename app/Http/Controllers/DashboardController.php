@@ -1,60 +1,38 @@
 <?php
 
-    namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
-    use App\Models\DataFeed;
-    use Illuminate\Support\Facades\Http;
+use App\Contracts\DatabaseService;
 
-    class DashboardController extends Controller
+class DashboardController extends Controller
+{
+    /**
+     * Displays the dashboard screen
+     */
+    public function index(DatabaseService $databaseService)
     {
+        // dd($this->getTokens($databaseService));
 
-        /**
-         * Displays the dashboard screen
-         *
-         * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-         */
-        public function index()
-        {
-            $dataFeed = new DataFeed();
+        $historicalBalances = $this->getHistoricalBalances($databaseService);
 
-            $tokens = $this->getTokensWithPrices();
-            $networks = $this->getNetworks($tokens);
-
-            return view('pages/dashboard/dashboard', compact('dataFeed', 'networks', 'tokens'));
-        }
-
-        protected function getNetworks($prices) {
-            $networks = config('addresses.networks', []);
-
-            foreach($networks as $network => $contracts) {
-                foreach($contracts as $key => $contract) {
-                    $networks[$network][$key]['price'] = 0;
-                    $networks[$network][$key]['balance'] = 0;
-
-                    if(array_key_exists($contract['address'], $prices)) {
-                        $networks[$network][$key]['price'] = $prices[$contract['address']]['price']['usd'];
-                    }
-                }
-            }
-
-            return $networks;
-        }
-
-        protected function getTokensWithPrices() {
-            $tokens = config('addredsses.tokens', []);
-
-            $ids = implode(',', array_map(fn ($token) => $token['coingeckoId'], $tokens));
-
-            $url = "https://api.coingecko.com/api/v3/simple/price?ids={$ids}&vs_currencies=usd,eur";
-
-            $response = Http::get($url);
-
-            $data = json_decode($response->body(), true);
-
-            foreach ($tokens as &$token) {
-                $token['price'] = $data[$token['coingeckoId']];
-            }
-
-            return $tokens;
-        }
+        return view('pages/dashboard/dashboard', compact('historicalBalances'));
     }
+
+    protected function getHistoricalBalances($databaseService)
+    {
+        return collect($databaseService->getHistoricalBalances())
+            ->sortByDesc('created_at')
+            ->take(30)
+            ->mapWithKeys(fn ($item) => [
+                $item->created_at => [
+                    'balance' => $item->balance,
+                    'price' => $item->price
+                ]
+            ]);
+    }
+
+    protected function getTokens($databaseService)
+    {
+        return collect($databaseService->getTokens());
+    }
+}
