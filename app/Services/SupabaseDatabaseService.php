@@ -7,6 +7,9 @@ use App\Contracts\DatabaseService;
 
 class SupabaseDatabaseService implements DatabaseService
 {
+    protected $url;
+    protected $apiKey;
+
     public function __construct($apiKey, $url) {
         $this->apiKey = $apiKey;
         $this->url = $url;
@@ -18,16 +21,24 @@ class SupabaseDatabaseService implements DatabaseService
 
     public function getHistoricalBalances() {
         return $this->get()
-            ->initializeDatabase('totals', 'id')
-            ->fetchAll()
-            ->getResult();
+            ->initializeDatabase('totals')
+            ->createCustomQuery([
+                'select' => 'price,balance,created_at',
+                'from'   => 'totals',
+                'limit' => 30,
+                'order' => 'created_at.desc'
+            ])->getResult();
     }
 
     public function getTokens() {
         return $this->get()
-            ->initializeDatabase('balances', 'id')
-            ->fetchAll()
-            ->getResult();
+            ->initializeDatabase('balances')
+            ->createCustomQuery([
+                'select' => 'pool,price,balance',
+                'from'   => 'balances',
+                'limit' => 12,
+                'order' => 'created_at.desc'
+            ])->getResult();
     }
 }
 
