@@ -7,12 +7,10 @@ use App\Contracts\DatabaseService;
 
 class SupabaseDatabaseService implements DatabaseService
 {
-    protected $url;
-    protected $apiKey;
+    protected $service;
 
     function __construct($apiKey, $url) {
-        $this->apiKey = $apiKey;
-        $this->url = $url;
+        $this->service = new Service($apiKey, $url);
     }
 
     public function getHistoricalBalances() {
@@ -32,7 +30,7 @@ class SupabaseDatabaseService implements DatabaseService
     }
 
     protected function execute($table, $query) {
-        return collect((new Service($this->apiKey, $this->url))
+        return collect($this->service
             ->initializeDatabase($table)
             ->createCustomQuery($query)
             ->getResult());
