@@ -16,7 +16,7 @@ class SupabaseDatabaseService implements DatabaseService
     public function getHistoricalBalances() {
         return $this->execute('totals', [
             'select' => 'price,balance,created_at',
-            'limit' => 30,
+            'limit' => 25,
             'order' => 'created_at.desc'
         ]);
     }
