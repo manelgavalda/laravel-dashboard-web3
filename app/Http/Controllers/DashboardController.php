@@ -10,7 +10,7 @@ class DashboardController extends Controller
     {
         $tokens = $databaseService->getTokens();
 
-        $ethereumPrice = $tokens->firstWhere('pool', 'ETH')->price;
+        $ethereumPrice = $tokens->firstWhere('pool', 'ETH (Mainnet)')->price;
 
         $historicalBalances = $databaseService->getHistoricalBalances()
             ->mapWithKeys(fn ($item) => [ $item->created_at => [
