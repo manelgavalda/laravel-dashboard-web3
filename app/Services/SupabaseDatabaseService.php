@@ -25,7 +25,7 @@ class SupabaseDatabaseService implements DatabaseService
 
     public function getTokens() {
         return $this->execute('balances', [
-            'select' => 'pool,price,balance',
+            'select' => 'pool,price,balance,parent',
             'limit' => 15,
             'order' => 'created_at.desc'
         ]);

@@ -10,6 +10,18 @@ class DashboardController extends Controller
     {
         $tokens = $databaseService->getTokens();
 
+        foreach($tokens as $token) {
+            $token->rewards = [];
+
+            foreach($tokens->whereNotNull('parent') as $index => $reward) {
+                if($reward->parent == $token->pool) {
+                    unset($tokens[$index]);
+
+                    $token->rewards[] = $reward;
+                }
+            }
+        }
+
         $ethereumPrice = $tokens->firstWhere('pool', 'ETH (Mainnet)')->price;
 
         $historicalBalances = $databaseService->getHistoricalBalances()
