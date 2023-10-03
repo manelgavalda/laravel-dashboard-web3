@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="{{ vercel_asset('build/assets/app2.css')}}">
         <script type="module" src="{{ vercel_asset('build/assets/app3.js') }}"></script>
 
+        @yield('scripts')
         <script>
             if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
                 document.querySelector('html').classList.remove('dark');
@@ -62,6 +63,7 @@
             </div>
 
         </div>
+
 
         @livewireScripts
     </body>

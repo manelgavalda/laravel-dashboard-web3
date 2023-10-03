@@ -37,6 +37,10 @@
                 :historical-balances="{{ json_encode($historicalBalances) }}"
             ></total-balance>
 
+            {{-- <x-dashboard.total --}}
+            {{--     :historical-balances="$historicalBalances" --}}
+            {{-- /> --}}
+
             <x-dashboard.tokens
                 :tokens="$tokens"
                 :ethereum-price="$ethereumPrice"

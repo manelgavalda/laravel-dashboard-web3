@@ -8,7 +8,7 @@ class DashboardController extends Controller
 {
     public function index(DatabaseService $databaseService)
     {
-        $tokens = $this->getTokens($databaseService);
+        $tokens = $databaseService->getTokens();
 
         $historicalBalances = $this->getHistoricalBalances($databaseService);
 
@@ -19,15 +19,10 @@ class DashboardController extends Controller
 
     protected function getHistoricalBalances($databaseService)
     {
-        return collect($databaseService->getHistoricalBalances())
+        return $databaseService->getHistoricalBalances()
             ->mapWithKeys(fn ($item) => [ $item->created_at => [
                 'balance' => $item->balance,
                 'price' => $item->price
             ]]);
-    }
-
-    protected function getTokens($databaseService)
-    {
-        return collect($databaseService->getTokens());
     }
 }

@@ -10,35 +10,32 @@ class SupabaseDatabaseService implements DatabaseService
     protected $url;
     protected $apiKey;
 
-    public function __construct($apiKey, $url) {
+    function __construct($apiKey, $url) {
         $this->apiKey = $apiKey;
         $this->url = $url;
     }
 
-    private function get() {
-        return new Service($this->apiKey, $this->url);
-    }
-
     public function getHistoricalBalances() {
-        return $this->get()
-            ->initializeDatabase('totals')
-            ->createCustomQuery([
-                'select' => 'price,balance,created_at',
-                'from'   => 'totals',
-                'limit' => 30,
-                'order' => 'created_at.desc'
-            ])->getResult();
+        return $this->execute('totals', [
+            'select' => 'price,balance,created_at',
+            'limit' => 30,
+            'order' => 'created_at.desc'
+        ]);
     }
 
     public function getTokens() {
-        return $this->get()
-            ->initializeDatabase('balances')
-            ->createCustomQuery([
-                'select' => 'pool,price,balance',
-                'from'   => 'balances',
-                'limit' => 12,
-                'order' => 'created_at.desc'
-            ])->getResult();
+        return $this->execute('balances', [
+            'select' => 'pool,price,balance',
+            'limit' => 12,
+            'order' => 'created_at.desc'
+        ]);
+    }
+
+    protected function execute($table, $query) {
+        return collect((new Service($this->apiKey, $this->url))
+            ->initializeDatabase($table)
+            ->createCustomQuery($query)
+            ->getResult());
     }
 }
 

@@ -2,6 +2,8 @@ import './bootstrap';
 import { createApp } from 'vue';
 import { ethers } from 'ethers';
 
+// import { populateCharts } from './charts'
+
 const app = createApp({});
 
 app.config.globalProperties.ethers = ethers;
