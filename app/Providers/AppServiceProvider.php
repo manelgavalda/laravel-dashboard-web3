@@ -19,12 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(DatabaseService::class, function() {
-            return new SupabaseDatabaseService(
-                config('supabase.api_key'),
-                config('supabase.url')
-            );
-        });
+        $this->app->bind(DatabaseService::class, fn() => new SupabaseDatabaseService(
+            config('supabase.api_key'),
+            config('supabase.url')
+        ));
     }
 
     /**

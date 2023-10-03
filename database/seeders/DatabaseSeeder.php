@@ -17,9 +17,5 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Admin'
         ]);
-
-        $this->call([
-            DashboardTableSeeder::class,
-        ]);
     }
 }

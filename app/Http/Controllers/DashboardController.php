@@ -10,19 +10,14 @@ class DashboardController extends Controller
     {
         $tokens = $databaseService->getTokens();
 
-        $historicalBalances = $this->getHistoricalBalances($databaseService);
-
         $ethereumPrice = $tokens->firstWhere('pool', 'ETH')->price;
 
-        return view('pages/dashboard/dashboard', compact('tokens', 'historicalBalances', 'ethereumPrice'));
-    }
-
-    protected function getHistoricalBalances($databaseService)
-    {
-        return $databaseService->getHistoricalBalances()
+        $historicalBalances = $databaseService->getHistoricalBalances()
             ->mapWithKeys(fn ($item) => [ $item->created_at => [
                 'balance' => $item->balance,
                 'price' => $item->price
             ]]);
+
+        return view('pages/dashboard/dashboard', compact('tokens', 'ethereumPrice', 'historicalBalances'));
     }
 }
