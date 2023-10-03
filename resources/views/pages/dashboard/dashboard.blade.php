@@ -26,9 +26,7 @@
                     </svg>
                     <span class="hidden xs:block ml-2">Add View</span>
                 </button>
-
             </div>
-
         </div>
 
         <!-- Cards -->
@@ -37,50 +35,10 @@
                 :historical-balances="{{ json_encode($historicalBalances) }}"
             ></total-balance>
 
-            {{-- <x-dashboard.total --}}
-            {{--     :historical-balances="$historicalBalances" --}}
-            {{-- /> --}}
-
             <x-dashboard.tokens
                 :tokens="$tokens"
                 :ethereum-price="$ethereumPrice"
             />
-
-            {{-- <dashboard-cards --}}
-            {{--     :historical-balances="{{ json_encode($historicalBalances) }}" --}}
-            {{-- ></dashboard-cards> --}}
-
-            <!-- Line chart (Acme Plus) -->
-            {{-- <x-dashboard.dashboard-card-01 :dataFeed="$dataFeed" /> --}}
-
-            {{-- <!-- Line chart (Acme Advanced) --> --}}
-            {{-- <x-dashboard.dashboard-card-02 :dataFeed="$dataFeed" /> --}}
-
-            {{-- <!-- Line chart (Acme Professional) --> --}}
-            {{-- <x-dashboard.dashboard-card-03 :dataFeed="$dataFeed" /> --}}
-
-            {{-- <!-- Bar chart (Direct vs Indirect) --> --}}
-            {{-- <x-dashboard.dashboard-card-04 /> --}}
-
-            {{-- <!-- Doughnut chart (Top Countries) --> --}}
-            {{-- <x-dashboard.dashboard-card-06 /> --}}
-
-            {{-- <!-- Stacked bar chart (Sales VS Refunds) --> --}}
-            {{-- <x-dashboard.dashboard-card-09 /> --}}
-
-            {{-- <!-- Card (Customers)  --> --}}
-            {{-- <x-dashboard.dashboard-card-10 /> --}}
-
-            {{-- <!-- Card (Reasons for Refunds)   --> --}}
-            {{-- <x-dashboard.dashboard-card-11 /> --}}
-
-            {{-- <!-- Card (Recent Activity) --> --}}
-            {{-- <x-dashboard.dashboard-card-12 /> --}}
-
-            {{-- <!-- Card (Income/Expenses) --> --}}
-            {{-- <x-dashboard.dashboard-card-13 /> --}}
-
         </div>
-
     </div>
 </x-app-layout>
