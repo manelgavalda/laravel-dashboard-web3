@@ -40,10 +40,11 @@ class DashboardController extends Controller
 
     protected function getHistoricalBalances($databaseService)
     {
-        return $databaseService->getHistoricalBalances()
-            ->mapWithKeys(fn ($item) => [ $item->created_at => [
+        return $databaseService->getHistoricalBalances()->mapWithKeys(fn ($item) => [
+            $item->created_at => [
                 'balance' => $item->balance,
                 'price' => $item->price
-            ]]);
+            ]
+        ]);
     }
 }
